@@ -1,5 +1,9 @@
 täisarv arv1 = 10;
-täisarv arv2 = 10;
+täisarv arv2 = 101;
+  // trüki(arv1); //loeb selle stringiks
+   //trüki("Sad5");
+   trüki(5.2);
+//trüki(arv1);
 /*arv1 = arv2;
 ujukomaarv arv3 = 2.5;
 ujukomaarv arv4 = 7.5;
@@ -16,13 +20,14 @@ kui (arv1 > 5) {
 /*täisarv arv1 = 6;*/
 
 korda (arv1 > 0) {
-   truki("Mind trükitakse välja 5 korda.");
+   trüki(5);
    arv1 = arv1 - 1;
 };
 
+/*
 funktsioon täisarv korrutaKaksTäisarvu(täisarv arv1, täisarv arv2, täisarv arv3) {
 	arv1 = 6;
     tagasta arv1 * arv2;
 };
 
-/*korrutaKaksTäisarvu(5,6);*/
+korrutaKaksTäisarvu(5,6);*/

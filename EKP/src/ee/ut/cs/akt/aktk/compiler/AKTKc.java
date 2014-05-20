@@ -2,9 +2,7 @@ package ee.ut.cs.akt.aktk.compiler;
 
 import static org.objectweb.asm.Opcodes.*;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -23,11 +21,11 @@ public class AKTKc {
 	
 	public static void main(String[] args) throws IOException {
 		// lihtsam viis "käsurea parameetrite andmiseks":
-		//args = new String[] {"signs.aktk"};
+		args = new String[] {"test.ekp"};
 		
 		
 		if (args.length != 1) {
-			throw new IllegalArgumentException("Sellele programmile tuleb anda parameetriks kompileeritava AKTK faili nimi");
+			throw new IllegalArgumentException("Sellele programmile tuleb anda parameetriks kompileeritava EKP faili nimi");
 		}
 		
 		File file = new File(args[0]);
@@ -36,12 +34,50 @@ public class AKTKc {
 		}
 		
 		
-		String className = file.getName().replace(".aktk", "");
+		String className = file.getName().replace(".ekp", "");
 		File dir = file.getAbsoluteFile().getParentFile();
 				
 		createClassFile(file, className, dir);
-	}
-	
+
+        try {
+            runClass();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void runClass() throws IOException, InterruptedException {
+        int result;
+
+        try {
+
+            System.out.println("command output:");
+            Process proc = Runtime.getRuntime().exec("java -cp ./bin;./lib/antlr-runtime-4.2.2.jar;./lib/asm-5.0.2.jar -Dfile.encoding=utf8 test");
+
+            InputStream errin = proc.getErrorStream();
+            InputStream in = proc.getInputStream();
+            BufferedReader errorOutput = new BufferedReader(new InputStreamReader(errin));
+            BufferedReader output = new BufferedReader(new InputStreamReader(in));
+            String line1 = null;
+            String line2 = null;
+            try {
+                while ((line1 = errorOutput.readLine()) != null ||
+                        (line2 = output.readLine()) != null) {
+                    if(line1 != null) System.out.print(line1);
+                    if(line2 != null) System.out.print(line2);
+                }//end while
+                errorOutput.close();
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }//end catc
+            result = proc.waitFor();
+        } catch (IOException e) {
+            System.err.println("IOException raised: " + e.getMessage());
+        }
+    }
+
+
 	private static void createClassFile(File sourceFile, String className, File outputFolder) throws IOException {
 		// loen faili sisu muutujasse
 		Scanner sc = new Scanner(sourceFile, "UTF-8");
@@ -51,8 +87,10 @@ public class AKTKc {
 		
 		// parsin ja moodustan AST'i
 		AstNode ast = ParsingUtils.createAst(source);
-		
-		FileOutputStream out = new FileOutputStream(className + ".class"); 
+        System.out.println(ast.toString());
+
+		FileOutputStream out = new FileOutputStream(outputFolder + "/bin/" + className + ".class");
+
 		out.write(createClass(ast, className));
 		out.close();
 	}
@@ -91,8 +129,13 @@ public class AKTKc {
 		return cw.toByteArray();
 	}
 	
-	private static int getVariableIndex(String name) {
-		Integer index = variableIndices.get(name);
+	private static Integer getVariableIndex(String name) {
+
+        Integer index;
+
+        index = variableIndices.get(name);
+
+
 		if (index != null) {
 			return index;
 		} 
@@ -113,8 +156,15 @@ public class AKTKc {
 		}
 		else if (node instanceof Assignment) {
 			generateCode(((Assignment) node).getExpression(), mv);
-			// eeldan, et kõik väärtused on täisarvud
-			mv.visitVarInsn(ISTORE, getVariableIndex(((Assignment) node).getVariableName()));
+            Expression exp = ((Assignment) node).getExpression();
+
+            if(exp instanceof IntegerLiteral){
+                mv.visitVarInsn(ILOAD, getVariableIndex(((Assignment) node).getVariableName()));
+            }else if(exp instanceof FloatingPointLiteral){
+                mv.visitVarInsn(FLOAD, getVariableIndex(((Assignment) node).getVariableName()));
+            }else{
+                mv.visitVarInsn(ALOAD, getVariableIndex(((Assignment) node).getVariableName()));
+            }
 		}
 		else if (node instanceof ExpressionStatement) {
 			generateCode(((ExpressionStatement) node).getExpression(), mv);
@@ -124,14 +174,38 @@ public class AKTKc {
 		else if (node instanceof IntegerLiteral) {
 			mv.visitLdcInsn(((IntegerLiteral) node).getValue());
 		}
+
+        else if (node instanceof FloatingPointLiteral) {
+            mv.visitLdcInsn(((FloatingPointLiteral) node).getValue());
+        }
+
+        else if (node instanceof StringLiteral) {
+            mv.visitLdcInsn(((StringLiteral) node).getValue());
+        }
+
 		else if (node instanceof Variable) {
-			mv.visitVarInsn(ILOAD, getVariableIndex(((Variable) node).getName()));
+            Expression exp = ((Variable) node).getDeclaration().getInitializer();
+            if(exp instanceof IntegerLiteral){
+                mv.visitVarInsn(ILOAD, getVariableIndex(((Variable) node).getName()));
+            }else if(exp instanceof FloatingPointLiteral){
+                mv.visitVarInsn(FLOAD, getVariableIndex(((Variable) node).getName()));
+            }else{
+                mv.visitVarInsn(ALOAD, getVariableIndex(((Variable) node).getName()));
+            }
 		}
 		else if (node instanceof VariableDeclaration) {
 			VariableDeclaration vardec = (VariableDeclaration) node;
-			if (vardec.getInitializer() != null) {
+            Expression exp = vardec.getInitializer();
+
+            if (vardec.getInitializer() != null) {
 				generateCode(vardec.getInitializer(), mv);
-				mv.visitVarInsn(ISTORE, getVariableIndex(vardec.getVariableName()));
+                if(exp instanceof IntegerLiteral){
+                    mv.visitVarInsn(ILOAD, getVariableIndex(vardec.getVariableName()));
+                }else if(exp instanceof FloatingPointLiteral){
+                    mv.visitVarInsn(FLOAD, getVariableIndex(vardec.getVariableName()));
+                }else{
+                    mv.visitVarInsn(ALOAD, getVariableIndex(vardec.getVariableName()));
+                }
 			}
 		}
 		else if (node instanceof FunctionCall) {
@@ -193,9 +267,6 @@ public class AKTKc {
 			mv.visitLabel(doneLabel);
 		}
 		else {
-			assert node instanceof FloatingPointLiteral 
-				|| node instanceof StringLiteral;
-			
 			throw new UnsupportedOperationException("Seda konstrutsiooni praegu me ei toeta");
 		}
 	}
@@ -205,14 +276,15 @@ public class AKTKc {
 		// Samal ajal panen kokku argumentide tüübikirjelduse
 		String argTypedesc = "";
 		for (Expression arg : call.getArguments()) {
-			generateCode(arg, mv);
-			argTypedesc += "I";
-		}
+            generateCode(arg, mv);
+			argTypedesc += getArgType(arg); //argTypeDesc ei oleks koguaeg I
+            System.out.println(argTypedesc);
+        }
 		mv.visitMethodInsn(
 				INVOKESTATIC,
-				"ee/ut/cs/aktk/aktk/library/AKTKBuiltins",
+				"ee/ut/cs/akt/aktk/library/Builtins",
 				call.getFunctionName(),
-				"("+argTypedesc+")I",
+				"("+argTypedesc+")I", //Tagastus väärtus muuta
 				false);
 	}
 	
@@ -273,4 +345,18 @@ public class AKTKc {
 		
 		mv.visitLabel(doneLabel);
 	}
+
+    public static String getArgType(Expression arg){
+        if(arg instanceof IntegerLiteral){
+            return "I";
+        }else if(arg instanceof FloatingPointLiteral){
+            return "F";
+        }else{
+            return "java/lang/String;"; //string
+        }
+    }
+
+    public static void visitVariable(){
+
+    }
 }
