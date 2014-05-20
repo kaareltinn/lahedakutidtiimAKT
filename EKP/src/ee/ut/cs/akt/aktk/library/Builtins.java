@@ -2,7 +2,14 @@
 
 package ee.ut.cs.akt.aktk.library;
 
-        import java.util.Scanner;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+import ee.ut.cs.akt.aktk.ast.SimpleType;
+import ee.ut.cs.akt.aktk.ast.Type;
 
 public class Builtins {
 
@@ -11,6 +18,16 @@ public class Builtins {
     public static double PI = Math.PI;
 
     public static int MAX_INT = Integer.MAX_VALUE;
+    
+    public static List<String> getInnerMethods(){
+    	return Arrays.asList(new String[]{"trüki"});
+    }
+    
+    public static Map getInnerVariables(){
+    	Map map = new HashMap<String, Type>();
+    	map.put("PI", new SimpleType("ujukomaarv"));
+    	return map;
+    }
 
     public static int trüki(int x) {
         System.out.println(x);

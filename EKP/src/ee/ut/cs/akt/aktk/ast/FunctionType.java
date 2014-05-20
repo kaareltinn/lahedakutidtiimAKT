@@ -19,4 +19,8 @@ public class FunctionType extends Type {
         result.add(this.returnType);
         return result;
     }
+    
+    public List<SimpleType> getArgumentTypes(){
+    	return argumentTypes;
+    }
 }

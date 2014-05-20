@@ -9,7 +9,7 @@ import java.util.List;
  * Funktsiooni deklareerimine.
  * 
  * Avaldise '2 + 3' AST oleks 
- * {@code new FunctionDeclaration(SÃµne, "funnimi", new IntegerLiteral(2), new IntegerLiteral(3))}
+ * {@code new FunctionDeclaration(Sõne, "funnimi", new IntegerLiteral(2), new IntegerLiteral(3))}
  */
 public class FunctionDeclaration extends Expression {
 
