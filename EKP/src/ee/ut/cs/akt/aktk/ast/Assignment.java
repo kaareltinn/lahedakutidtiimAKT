@@ -24,7 +24,7 @@ public class Assignment extends Statement {
 	public Expression getExpression() {
 		return expression;
 	}
-	
+
 	public String getVariableName() {
 		return variableName;
 	}

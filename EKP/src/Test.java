@@ -16,7 +16,9 @@ public class Test {
 		AstNode ast = ParsingUtils.createAst(getProgramText("test.ekp"));
         System.out.println(ast);
         StaticChecker.check(ast);
-	}
+        System.out.println(ast);
+
+    }
 	
 	private static String getProgramText(String filename) throws FileNotFoundException {
 		try (Scanner sc = new Scanner(new File("test.ekp"))) {

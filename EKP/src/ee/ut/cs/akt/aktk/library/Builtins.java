@@ -40,7 +40,7 @@ public class Builtins {
     }
 
 
-    public static int trüki(float x) {
+    public static int trüki(double x) {
         System.out.println(x);
         return 0; // lihtsalt selleks, et kõik funktsioonid tagastaksid täisarvu
     }
@@ -73,8 +73,14 @@ public class Builtins {
         return systemInScanner.nextLine();
     }
 
+    public static double abc(double a){return a;};
+    public static String abc(String a){return a;};
+    public static int abc(int a){return a;};
+
+
     public static void printStr(String s) {
         System.out.print(s);
+        abc(power(2,3));
     }
 
 
