@@ -26,7 +26,7 @@ public class StaticChecker {
 			Map<String, Type> plokiSkoop = new HashMap<>(muutujad);
 
 			for (Statement stmt : ((Block) tipp).getStatements()) {
-//				System.out.println("Cheking " + stmt.toString());
+				System.out.println("Cheking " + stmt.toString());
 				check(stmt, plokiSkoop);
 			}
 		} else if (tipp instanceof VariableDeclaration) {
@@ -48,9 +48,6 @@ public class StaticChecker {
 //			System.out.println(((IfStatement) tipp).getElseBranch());
 			check(((IfStatement) tipp).getElseBranch(), muutujad);
 		} else if (tipp instanceof FunctionCall) {
-//			System.out.println("FN CALL");
-//			System.out.println(((FunctionCall) tipp).getArguments());
-//			System.out.println(muutujad.get(((FunctionCall) tipp).getFunctionName()));
 			if(muutujad.containsKey(((FunctionCall) tipp).getFunctionName())){
 				//on defineeritud funktsioon
 				List<Expression> givenArgs = ((FunctionCall) tipp).getArguments();
@@ -84,12 +81,12 @@ public class StaticChecker {
 			//v�iks olla, et tr�ki k�ik? siis pole kontrolli vaja
 			check(((ExpressionStatement) tipp).getExpression(), muutujad);
 		}else if (tipp instanceof FunctionDeclaration) {
-//			System.out.println("FN DEC");
 			//Tekitan FunctionType.java objekti ja panen selle mapin selle funktsiooni nimega.
 			List<VariableDeclaration> varDec = ((FunctionDeclaration) tipp).getArguments();
 			List<SimpleType> fnArgs = new ArrayList<SimpleType>();
 			for(int i=0;i<varDec.size();i++){
 				fnArgs.add((SimpleType)varDec.get(i).getType());
+				muutujad.put(varDec.get(i).getVariableName(), varDec.get(i).getType()); //ilmselt vale?
 			}
 			FunctionType fnType = new FunctionType(fnArgs, ((FunctionDeclaration) tipp).getFunctionReturnType());
 			muutujad.put(((FunctionDeclaration) tipp).getFunctionName(), fnType);
@@ -102,7 +99,7 @@ public class StaticChecker {
 					throw new WrongTypeException();
 				}
 			}else{
-				if(!((FunctionDeclaration) tipp).getFunctionReturnType().getName().equalsIgnoreCase("t�hi")){
+				if(!((FunctionDeclaration) tipp).getFunctionReturnType().getName().equalsIgnoreCase("tühi")){
 					throw new WrongTypeException();
 				}
 			}
@@ -110,6 +107,7 @@ public class StaticChecker {
 //			System.out.println("ASSINGMENT");
 			try{
 			Type arg1 = muutujad.get(((Assignment) tipp).getVariableName());
+			System.out.println(muutujad.toString());
 			Type arg2 = checkExpression(((Assignment) tipp).getExpression(), muutujad);
 			if(!arg1.equals(arg2)){
 				throw new WrongTypeException();
@@ -137,18 +135,17 @@ public class StaticChecker {
     	}else if (expression instanceof FloatingPointLiteral) {
     		return new SimpleType("ujukomaarv");
     	}else if (expression instanceof Variable){
-//    		System.out.println(((Variable) expression).getName());
     		if(variablesInScope.containsKey(((Variable) expression).getName())){
     			//var on olemas
     			return variablesInScope.get(((Variable) expression).getName());
     		}else if(innerVars.containsKey(((Variable) expression).getName())){
     			return (Type) innerVars.get(((Variable) expression).getName());
-    		}else{//seda vist vaja siis kui deklareeritud aga pole kasutatud??
-    			return checkExpression(expression, variablesInScope);
+    		}else{
+    			throw new WrongTypeException();
     		}
     	}
     	else if (expression instanceof FunctionCall) {
-//    		System.out.println("in functioncall");
+    		System.out.println("in functioncall");
     		Type arg1;
     		if(((FunctionCall) expression).isComparisonOperation()){
     			List<Expression> arguments = ((FunctionCall) expression).getArguments();
@@ -158,11 +155,11 @@ public class StaticChecker {
     				throw new WrongTypeException();
     			}
     		}else if(((FunctionCall) expression).isArithmeticOrLogicOperation()){
+    			System.out.println(expression);
     			List<Expression> arguments = ((FunctionCall) expression).getArguments();
-//    			System.out.println(arguments.toString());
     			arg1 = checkExpression(arguments.get(0), variablesInScope);
     			for(int i=1;i<arguments.size();i++){
-    				Type arg2 = checkExpression(arguments.get(1), variablesInScope);
+    				Type arg2 = checkExpression(arguments.get(i), variablesInScope);
     				if(!arg1.equals(arg2)){
         				throw new WrongTypeException();
         			}
