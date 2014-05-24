@@ -19,7 +19,7 @@ lause
     ;
 
 ifLause
-    :   'kui' '(' avaldis ')' '{' lauseteJada '}' 'muidu' '{' lauseteJada '}'
+    :   'kui' '(' avaldis ')' '{' lauseteJada '}' ('muidu' '{' lauseteJada '}')?
     ;
 
 whileLause

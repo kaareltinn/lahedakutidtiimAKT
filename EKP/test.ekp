@@ -1,13 +1,24 @@
+trüki("afwf");
 
-1 + 1;
-ujukomaarv a = 0.0;
-a = 2.55 - 2.42;
-trüki(a);
+täisarv a = 4;
+
+korda (a > 0){
+
+	trüki("See prinditakse a korda");
+	a = a - 1;
+
+};
+
+kui(1==1){
+    trüki("2");
+}muidu{
+};
+
 
 /*
 
-funktsioon täisarv korrutaKaksTäisarvu() {
- tagasta 1;
+funktsioon täisarv korrutaKaksTäisarvu(täisarv arv1, täisarv arv2, täisarv arv6) {
+ tagasta arv1;
 };
 
 */

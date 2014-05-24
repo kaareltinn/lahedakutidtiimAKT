@@ -13,6 +13,8 @@ import org.objectweb.asm.*;
 import ee.ut.cs.akt.aktk.ast.*;
 import ee.ut.cs.akt.aktk.parser.ParsingUtils;
 
+import javax.swing.*;
+
 
 public class EKPc {
 	
@@ -44,22 +46,23 @@ public class EKPc {
 
         fillMapWithReturnTypes(returnTypes);
 
+
         createClassFile(file, className, dir);
 
         try {
-            runClass();
+            runClass(className);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public static void runClass() throws IOException, InterruptedException {
+    public static void runClass(String className) throws IOException, InterruptedException {
         int result;
 
         try {
 
             System.out.println("command output:");
-            Process proc = Runtime.getRuntime().exec("java -cp ./bin;./lib/antlr-runtime-4.2.2.jar;./lib/asm-5.0.2.jar -Dfile.encoding=utf8 test");
+            Process proc = Runtime.getRuntime().exec("java -cp ./bin;./lib/antlr-runtime-4.2.2.jar;./lib/asm-5.0.2.jar -Dfile.encoding=utf8 " + className);
 
             InputStream errin = proc.getErrorStream();
             InputStream in = proc.getInputStream();
@@ -337,8 +340,11 @@ public class EKPc {
 			mv.visitJumpInsn(GOTO, doneLabel);
 			
 			mv.visitLabel(elseLabel);
-			generateCode(stmt.getElseBranch(), mv);
-			
+            if(stmt.getElseBranch() != null){
+                generateCode(stmt.getElseBranch(), mv);
+
+            }
+
 			mv.visitLabel(doneLabel);
 		}
 		else if (node instanceof WhileStatement) {
@@ -526,6 +532,60 @@ public class EKPc {
             return "Ljava/lang/String;";
         }else{
             return null;
+        }
+    }
+
+    public static void createClassFileFromString(String text, String className, File dir) throws IOException {
+
+        fillMapWithReturnTypes(returnTypes);
+
+        // parsin ja moodustan AST'i
+        AstNode ast = ParsingUtils.createAst(text.trim());
+        System.out.println(ast.toString());
+        //StaticChecker.check(ast);
+
+
+        FileOutputStream out = new FileOutputStream(dir + "/bin/" + className + ".class");
+
+        out.write(createClass(ast, className));
+        out.close();
+    }
+
+    public static void runClassInIDE(String className, JEditorPane console) throws IOException, InterruptedException {
+        int result;
+
+        try {
+
+            System.out.println("command output:");
+            Process proc = Runtime.getRuntime().exec("java -cp ./bin;./lib/antlr-runtime-4.2.2.jar;./lib/asm-5.0.2.jar -Dfile.encoding=utf8 " + className);
+
+            InputStream errin = proc.getErrorStream();
+            InputStream in = proc.getInputStream();
+            BufferedReader errorOutput = new BufferedReader(new InputStreamReader(errin));
+            BufferedReader output = new BufferedReader(new InputStreamReader(in));
+            String line1 = null;
+            String line2 = null;
+            String sout = "";
+            String serr = "";
+            try {
+                while ((line1 = errorOutput.readLine()) != null ||
+                        (line2 = output.readLine()) != null) {
+                    if(line1 != null) serr += line1 + "\n";
+                    if(line2 != null) sout += line2 + "\n";
+                }//end while
+                errorOutput.close();
+                output.close();
+                if(!serr.equals("")){
+                    console.setText(serr);
+                }else{
+                    console.setText(sout);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }//end catc
+            result = proc.waitFor();
+        } catch (IOException e) {
+            System.err.println("IOException raised: " + e.getMessage());
         }
     }
 }

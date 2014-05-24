@@ -180,8 +180,13 @@ public class AstCreationVisitor extends EKPBaseVisitor<AstNode> {
 	public AstNode visitIfLause(IfLauseContext ctx) {
 		Expression tingimus = (Expression) this.visit(ctx.getChild(2));
 		Statement thenHaru = (Statement) this.visit(ctx.getChild(5));
-		Statement elseHaru = (Statement) this.visit(ctx.getChild(9));
-		
+        Statement elseHaru = null;
+        if(ctx.getChildCount() >= 9){
+            elseHaru = (Statement) this.visit(ctx.getChild(9));
+        }else{
+            elseHaru = null;
+        }
+
 		return new IfStatement(tingimus, thenHaru, elseHaru);
 	}
 	

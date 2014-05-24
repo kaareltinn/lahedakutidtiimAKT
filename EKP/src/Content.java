@@ -31,7 +31,7 @@ import javax.swing.event.MenuListener;
 
 import ee.ut.cs.akt.aktk.ast.AstNode;
 import ee.ut.cs.akt.aktk.checker.StaticChecker;
-import ee.ut.cs.akt.aktk.compiler.AKTKc;
+import ee.ut.cs.akt.aktk.compiler.EKPc;
 import ee.ut.cs.akt.aktk.parser.ParsingUtils;
 
 
@@ -104,9 +104,10 @@ public class Content extends JPanel {
 						}					
 					String className = savedFile.getName().replace(".ekp", "");
 					File dir = savedFile.getAbsoluteFile().getParentFile();
-					checkIfBinExsists(className, dir);
-					AKTKc.createClassFile(editorPane.getText(), className, dir);
-					AKTKc.runClass();
+                        System.out.println(dir);
+                        checkIfBinExsists(className, dir);
+					EKPc.createClassFileFromString(editorPane.getText(), className, dir);
+					EKPc.runClassInIDE(className, consolePane);
 					}catch(Exception ex){
 						ex.printStackTrace();
 						consolePane.setText("Ei suutnud kompileerida");
@@ -167,4 +168,6 @@ public class Content extends JPanel {
 		File classFile = new File(dir.getPath()+"/bin");
 		if(!classFile.exists()){classFile.mkdir();}
 	}
+
+
 }

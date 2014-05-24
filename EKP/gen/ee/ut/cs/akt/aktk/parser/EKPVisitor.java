@@ -1,4 +1,4 @@
-// Generated from C:/Users/Markus/Desktop/Kooli stuff/IV semester/Automaadid, keeled ja translaaatorid/EKP/src/ee/ut/cs/akt/aktk/parser\EKP.g4 by ANTLR 4.x
+// Generated from C:/Users/Markus/Documents/lahedakutidtiimAKT/EKP/src/ee/ut/cs/akt/aktk/parser\EKP.g4 by ANTLR 4.x
 package ee.ut.cs.akt.aktk.parser;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
