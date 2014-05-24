@@ -535,7 +535,7 @@ public class EKPc {
         }
     }
 
-    public static void createClassFileFromString(String text, String className, File dir) throws IOException {
+    public static void createClassFileFromString(String text, String className, String dir) throws IOException {
 
         fillMapWithReturnTypes(returnTypes);
 

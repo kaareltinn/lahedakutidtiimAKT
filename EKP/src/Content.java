@@ -103,10 +103,9 @@ public class Content extends JPanel {
 							savedFile = new File(saveToFile());
 						}					
 					String className = savedFile.getName().replace(".ekp", "");
-					File dir = savedFile.getAbsoluteFile().getParentFile();
-                        System.out.println(dir);
-                        checkIfBinExsists(className, dir);
-					EKPc.createClassFileFromString(editorPane.getText(), className, dir);
+					String workingDir = System.getProperty("user.dir");
+                    //checkIfBinExsists(className, dir);
+					EKPc.createClassFileFromString(editorPane.getText(), className, workingDir);
 					EKPc.runClassInIDE(className, consolePane);
 					}catch(Exception ex){
 						ex.printStackTrace();
