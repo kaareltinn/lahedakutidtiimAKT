@@ -7,6 +7,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -28,7 +29,10 @@ import javax.swing.event.MenuKeyEvent;
 import javax.swing.event.MenuKeyListener;
 import javax.swing.event.MenuListener;
 
+import ee.ut.cs.akt.aktk.ast.AstNode;
+import ee.ut.cs.akt.aktk.checker.StaticChecker;
 import ee.ut.cs.akt.aktk.compiler.AKTKc;
+import ee.ut.cs.akt.aktk.parser.ParsingUtils;
 
 
 public class Content extends JPanel {
@@ -91,6 +95,7 @@ public class Content extends JPanel {
 				// TODO Auto-generated method stub
 				String operation = e.getActionCommand();
 				if(operation.equalsIgnoreCase("kompileeri")){
+					consolePane.setText("");
 					try{
 						try{
 							savedFile.exists();
@@ -108,6 +113,7 @@ public class Content extends JPanel {
 					}
 				}else if(operation.equalsIgnoreCase("uus fail")){
 					savedFile = null;
+					editorPane.removeAll();
 					editorPane.setText("");
 				}else if(operation.equalsIgnoreCase("salvesta fail")){
 					saveToFile();
@@ -124,8 +130,11 @@ public class Content extends JPanel {
 		int rVal = c.showOpenDialog(this);
 		if(rVal==JFileChooser.APPROVE_OPTION){
 			savedFile = c.getSelectedFile();
+			System.out.println(savedFile.exists());
 			try{
+				editorPane.removeAll();
 				editorPane.setPage(savedFile.toURI().toURL());
+				System.out.println(savedFile.toURI().toURL());
 			}catch(Exception e){
 				consolePane.setText("Ei suutnud faili sisse lugeda.");
 			}
@@ -133,14 +142,18 @@ public class Content extends JPanel {
 	}
 	
 	private String saveToFile(){
+		savedFile = null;
 		JFileChooser c = new JFileChooser();
 		int rVal = c.showSaveDialog(this);
 		if(rVal==JFileChooser.APPROVE_OPTION){
-			String filePath = c.getSelectedFile().getPath()+".ekp";
+			String filePath = c.getSelectedFile().getPath();
+			if(!filePath.substring(filePath.length()-4, filePath.length()).equalsIgnoreCase(".ekp")){
+				filePath += ".ekp";
+			}
 			try{
-				FileWriter fw = new FileWriter(filePath);
+				FileOutputStream fw = new FileOutputStream(filePath);
 				savedFile = new File(filePath);
-				fw.write(editorPane.getText());
+				fw.write(editorPane.getText().getBytes());
 				fw.close();
 			}catch(Exception e){
 				consolePane.setText("Ei suutnud faili salvestada");

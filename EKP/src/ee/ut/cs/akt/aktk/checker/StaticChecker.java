@@ -69,6 +69,13 @@ public class StaticChecker {
 				}	
 			}else if (innerMethods.contains(((FunctionCall) tipp).getFunctionName())){
 				//on sisefunktsioonid, n�iteks prindi!
+				List<Expression> exp = ((FunctionCall) tipp).getArguments();
+				Type arg1 = checkExpression(exp.get(0), muutujad);
+				for(int i=1;i<exp.size();i++){
+					if(arg1.equals(checkExpression(exp.get(i), muutujad))){
+						throw new WrongTypeException();
+					}
+				}
 				String fnName = ((FunctionCall) tipp).getFunctionName();
 //				System.out.println("SISEMEETOD " + fnName);
 			}else{
