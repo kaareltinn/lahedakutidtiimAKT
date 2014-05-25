@@ -97,7 +97,7 @@ public class EKPc {
 		
 		// parsin ja moodustan AST'i
 		AstNode ast = ParsingUtils.createAst(source);
-        System.out.println(ast.toString());
+        //System.out.println(ast.toString());
         //StaticChecker.check(ast);
 
 
@@ -382,7 +382,7 @@ public class EKPc {
             argTypedesc += getArgType(arg);
         }
 
-        System.out.println(call.getFunctionName() + " " + returnTypes.get(call.getFunctionName()));
+        //System.out.println(call.getFunctionName() + " " + returnTypes.get(call.getFunctionName()));
 
 
         mv.visitMethodInsn(
@@ -541,8 +541,8 @@ public class EKPc {
 
         // parsin ja moodustan AST'i
         AstNode ast = ParsingUtils.createAst(text.trim());
-        System.out.println(ast.toString());
-        //StaticChecker.check(ast);
+        //system.out.println(ast.toString());
+        StaticChecker.check(ast);
 
 
         FileOutputStream out = new FileOutputStream(dir + "/bin/" + className + ".class");
@@ -556,7 +556,6 @@ public class EKPc {
 
         try {
 
-            System.out.println("command output:");
             Process proc = Runtime.getRuntime().exec("java -cp ./bin;./lib/antlr-runtime-4.2.2.jar;./lib/asm-5.0.2.jar -Dfile.encoding=utf8 " + className);
 
             InputStream errin = proc.getErrorStream();

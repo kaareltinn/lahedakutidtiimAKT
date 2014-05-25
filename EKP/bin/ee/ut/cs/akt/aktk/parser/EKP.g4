@@ -30,32 +30,18 @@ omistamine
     :   MuutujaNimi '=' avaldis
     ;
 
-/*tyyp
-    : lihtneTyyp
-    | funktsiooniTyyp
-    ;
-
-lihtneTyyp
-    : MuutujaNimi
-    ;
-
-funktsiooniTyyp
-    : lihtneTyyp '->' lihtneTyyp
-    | '(' lihtneTyyp (',' lihtneTyyp)*  ')' '->' lihtneTyyp
-    ;
-*/
 muutujaDeklaratsioon
     :   dataType MuutujaNimi /*(':' tyyp)?*/ ('=' avaldis)?
     ;
 
 dataType
-    : ('täisarv' | 'ta')
-    | ('ujukomaarv' |'uka')
+    : 'täisarv'
+    | 'ujukomaarv'
     | 'sõne'
     ;
 
 function
-    : ('funktsioon' | 'fun') dataType MuutujaNimi '(' (muutujaDeklaratsioon (',' muutujaDeklaratsioon)*)* ')' '{' lauseteJada 'tagasta' avaldis ';' '}'
+    : 'funktsioon' dataType MuutujaNimi '(' (muutujaDeklaratsioon (',' muutujaDeklaratsioon)*)* ')' '{' lauseteJada 'tagasta' avaldis ';' '}'
     ;
 
 avaldis

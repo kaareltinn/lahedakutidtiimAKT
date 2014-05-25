@@ -15,17 +15,17 @@ public class EKPParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__27=1, T__26=2, T__25=3, T__24=4, T__23=5, T__22=6, T__21=7, T__20=8, 
-		T__19=9, T__18=10, T__17=11, T__16=12, T__15=13, T__14=14, T__13=15, T__12=16, 
-		T__11=17, T__10=18, T__9=19, T__8=20, T__7=21, T__6=22, T__5=23, T__4=24, 
-		T__3=25, T__2=26, T__1=27, T__0=28, MuutujaNimi=29, Arvuliteraal=30, Soneliteraal=31, 
-		Kommentaar=32, Rida_Kommentaar=33, Whitespace=34;
+		T__24=1, T__23=2, T__22=3, T__21=4, T__20=5, T__19=6, T__18=7, T__17=8, 
+		T__16=9, T__15=10, T__14=11, T__13=12, T__12=13, T__11=14, T__10=15, T__9=16, 
+		T__8=17, T__7=18, T__6=19, T__5=20, T__4=21, T__3=22, T__2=23, T__1=24, 
+		T__0=25, MuutujaNimi=26, Arvuliteraal=27, Soneliteraal=28, Kommentaar=29, 
+		Rida_Kommentaar=30, Whitespace=31;
 	public static final String[] tokenNames = {
-		"<INVALID>", "'sõne'", "','", "'-'", "'*'", "'('", "'<'", "'!='", "'täisarv'", 
-		"'<='", "'{'", "'ujukomaarv'", "'korda'", "'}'", "')'", "'ta'", "'+'", 
-		"'muidu'", "'kui'", "'='", "';'", "'fun'", "'funktsioon'", "'>'", "'uka'", 
-		"'tagasta'", "'=='", "'/'", "'>='", "MuutujaNimi", "Arvuliteraal", "Soneliteraal", 
-		"Kommentaar", "Rida_Kommentaar", "Whitespace"
+		"<INVALID>", "'sõne'", "','", "'*'", "'-'", "'('", "'<'", "'!='", "'täisarv'", 
+		"'<='", "'{'", "'ujukomaarv'", "'korda'", "'}'", "')'", "'+'", "'muidu'", 
+		"'kui'", "'='", "';'", "'funktsioon'", "'>'", "'tagasta'", "'=='", "'/'", 
+		"'>='", "MuutujaNimi", "Arvuliteraal", "Soneliteraal", "Kommentaar", "Rida_Kommentaar", 
+		"Whitespace"
 	};
 	public static final int
 		RULE_programm = 0, RULE_lauseteJada = 1, RULE_lause = 2, RULE_ifLause = 3, 
@@ -127,11 +127,11 @@ public class EKPParser extends Parser {
 			setState(39);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__27) | (1L << T__25) | (1L << T__23) | (1L << T__20) | (1L << T__18) | (1L << T__17) | (1L << T__16) | (1L << T__13) | (1L << T__10) | (1L << T__7) | (1L << T__6) | (1L << T__4) | (1L << MuutujaNimi) | (1L << Arvuliteraal) | (1L << Soneliteraal))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__24) | (1L << T__21) | (1L << T__20) | (1L << T__17) | (1L << T__15) | (1L << T__14) | (1L << T__13) | (1L << T__8) | (1L << T__5) | (1L << MuutujaNimi) | (1L << Arvuliteraal) | (1L << Soneliteraal))) != 0)) {
 				{
 				{
 				setState(34); lause();
-				setState(35); match(T__8);
+				setState(35); match(T__6);
 				}
 				}
 				setState(41);
@@ -226,9 +226,9 @@ public class EKPParser extends Parser {
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(47); match(T__18);
+				setState(47); match(T__15);
 				setState(48); lauseteJada();
-				setState(49); match(T__15);
+				setState(49); match(T__12);
 				}
 				break;
 			case 7:
@@ -281,21 +281,21 @@ public class EKPParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(54); match(T__10);
-			setState(55); match(T__23);
+			setState(54); match(T__8);
+			setState(55); match(T__20);
 			setState(56); avaldis();
-			setState(57); match(T__14);
-			setState(58); match(T__18);
+			setState(57); match(T__11);
+			setState(58); match(T__15);
 			setState(59); lauseteJada();
-			setState(60); match(T__15);
+			setState(60); match(T__12);
 			setState(66);
 			_la = _input.LA(1);
-			if (_la==T__11) {
+			if (_la==T__9) {
 				{
-				setState(61); match(T__11);
-				setState(62); match(T__18);
+				setState(61); match(T__9);
+				setState(62); match(T__15);
 				setState(63); lauseteJada();
-				setState(64); match(T__15);
+				setState(64); match(T__12);
 				}
 			}
 
@@ -339,13 +339,13 @@ public class EKPParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(68); match(T__16);
-			setState(69); match(T__23);
+			setState(68); match(T__13);
+			setState(69); match(T__20);
 			setState(70); avaldis();
-			setState(71); match(T__14);
-			setState(72); match(T__18);
+			setState(71); match(T__11);
+			setState(72); match(T__15);
 			setState(73); lauseteJada();
-			setState(74); match(T__15);
+			setState(74); match(T__12);
 			}
 		}
 		catch (RecognitionException re) {
@@ -385,7 +385,7 @@ public class EKPParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(76); match(MuutujaNimi);
-			setState(77); match(T__9);
+			setState(77); match(T__7);
 			setState(78); avaldis();
 			}
 		}
@@ -433,9 +433,9 @@ public class EKPParser extends Parser {
 			setState(81); match(MuutujaNimi);
 			setState(84);
 			_la = _input.LA(1);
-			if (_la==T__9) {
+			if (_la==T__7) {
 				{
-				setState(82); match(T__9);
+				setState(82); match(T__7);
 				setState(83); avaldis();
 				}
 			}
@@ -473,40 +473,14 @@ public class EKPParser extends Parser {
 		enterRule(_localctx, 14, RULE_dataType);
 		int _la;
 		try {
-			setState(89);
-			switch (_input.LA(1)) {
-			case T__20:
-			case T__13:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(86);
-				_la = _input.LA(1);
-				if ( !(_la==T__20 || _la==T__13) ) {
-				_errHandler.recoverInline(this);
-				}
-				consume();
-				}
-				break;
-			case T__17:
-			case T__4:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(87);
-				_la = _input.LA(1);
-				if ( !(_la==T__17 || _la==T__4) ) {
-				_errHandler.recoverInline(this);
-				}
-				consume();
-				}
-				break;
-			case T__27:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(88); match(T__27);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(86);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__24) | (1L << T__17) | (1L << T__14))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
 			}
 		}
 		catch (RecognitionException re) {
@@ -558,49 +532,44 @@ public class EKPParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(91);
-			_la = _input.LA(1);
-			if ( !(_la==T__7 || _la==T__6) ) {
-			_errHandler.recoverInline(this);
-			}
-			consume();
-			setState(92); dataType();
-			setState(93); match(MuutujaNimi);
-			setState(94); match(T__23);
-			setState(105);
+			setState(88); match(T__5);
+			setState(89); dataType();
+			setState(90); match(MuutujaNimi);
+			setState(91); match(T__20);
+			setState(102);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__27) | (1L << T__20) | (1L << T__17) | (1L << T__13) | (1L << T__4))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__24) | (1L << T__17) | (1L << T__14))) != 0)) {
 				{
 				{
-				setState(95); muutujaDeklaratsioon();
-				setState(100);
+				setState(92); muutujaDeklaratsioon();
+				setState(97);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (_la==T__26) {
+				while (_la==T__23) {
 					{
 					{
-					setState(96); match(T__26);
-					setState(97); muutujaDeklaratsioon();
+					setState(93); match(T__23);
+					setState(94); muutujaDeklaratsioon();
 					}
 					}
-					setState(102);
+					setState(99);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
 				}
 				}
-				setState(107);
+				setState(104);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(108); match(T__14);
-			setState(109); match(T__18);
-			setState(110); lauseteJada();
-			setState(111); match(T__3);
-			setState(112); avaldis();
-			setState(113); match(T__8);
-			setState(114); match(T__15);
+			setState(105); match(T__11);
+			setState(106); match(T__15);
+			setState(107); lauseteJada();
+			setState(108); match(T__3);
+			setState(109); avaldis();
+			setState(110); match(T__6);
+			setState(111); match(T__12);
 			}
 		}
 		catch (RecognitionException re) {
@@ -638,7 +607,7 @@ public class EKPParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(116); avaldis5();
+			setState(113); avaldis5();
 			}
 		}
 		catch (RecognitionException re) {
@@ -700,27 +669,27 @@ public class EKPParser extends Parser {
 		enterRule(_localctx, 20, RULE_avaldis5);
 		int _la;
 		try {
-			setState(123);
-			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
+			setState(120);
+			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 			case 1:
 				_localctx = new VordlemineContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(118); avaldis4(0);
-				setState(119);
+				setState(115); avaldis4(0);
+				setState(116);
 				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__22) | (1L << T__21) | (1L << T__19) | (1L << T__5) | (1L << T__2) | (1L << T__0))) != 0)) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__19) | (1L << T__18) | (1L << T__16) | (1L << T__4) | (1L << T__2) | (1L << T__0))) != 0)) ) {
 				_errHandler.recoverInline(this);
 				}
 				consume();
-				setState(120); avaldis4(0);
+				setState(117); avaldis4(0);
 				}
 				break;
 			case 2:
 				_localctx = new TriviaalneAvaldis5Context(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(122); avaldis4(0);
+				setState(119); avaldis4(0);
 				}
 				break;
 			}
@@ -800,12 +769,12 @@ public class EKPParser extends Parser {
 			_ctx = _localctx;
 			_prevctx = _localctx;
 
-			setState(126); avaldis3(0);
+			setState(123); avaldis3(0);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(133);
+			setState(130);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			while ( _alt!=2 && _alt!=ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -814,21 +783,21 @@ public class EKPParser extends Parser {
 					{
 					_localctx = new LiitmineLahutamineContext(new Avaldis4Context(_parentctx, _parentState));
 					pushNewRecursionContext(_localctx, _startState, RULE_avaldis4);
-					setState(128);
+					setState(125);
 					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-					setState(129);
+					setState(126);
 					_la = _input.LA(1);
-					if ( !(_la==T__25 || _la==T__12) ) {
+					if ( !(_la==T__21 || _la==T__10) ) {
 					_errHandler.recoverInline(this);
 					}
 					consume();
-					setState(130); avaldis3(0);
+					setState(127); avaldis3(0);
 					}
 					} 
 				}
-				setState(135);
+				setState(132);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			}
 			}
 		}
@@ -907,12 +876,12 @@ public class EKPParser extends Parser {
 			_ctx = _localctx;
 			_prevctx = _localctx;
 
-			setState(137); avaldis2();
+			setState(134); avaldis2();
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(144);
+			setState(141);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			while ( _alt!=2 && _alt!=ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -921,21 +890,21 @@ public class EKPParser extends Parser {
 					{
 					_localctx = new KorrutamineJagamineContext(new Avaldis3Context(_parentctx, _parentState));
 					pushNewRecursionContext(_localctx, _startState, RULE_avaldis3);
-					setState(139);
+					setState(136);
 					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-					setState(140);
+					setState(137);
 					_la = _input.LA(1);
-					if ( !(_la==T__24 || _la==T__1) ) {
+					if ( !(_la==T__22 || _la==T__1) ) {
 					_errHandler.recoverInline(this);
 					}
 					consume();
-					setState(141); avaldis2();
+					setState(138); avaldis2();
 					}
 					} 
 				}
-				setState(146);
+				setState(143);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			}
 			}
 		}
@@ -994,24 +963,24 @@ public class EKPParser extends Parser {
 		Avaldis2Context _localctx = new Avaldis2Context(_ctx, getState());
 		enterRule(_localctx, 26, RULE_avaldis2);
 		try {
-			setState(150);
+			setState(147);
 			switch (_input.LA(1)) {
-			case T__25:
+			case T__21:
 				_localctx = new UnaarneMiinusContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(147); match(T__25);
-				setState(148); avaldis2();
+				setState(144); match(T__21);
+				setState(145); avaldis2();
 				}
 				break;
-			case T__23:
+			case T__20:
 			case MuutujaNimi:
 			case Arvuliteraal:
 			case Soneliteraal:
 				_localctx = new TriviaalneAvaldis2Context(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(149); avaldis1();
+				setState(146); avaldis1();
 				}
 				break;
 			default:
@@ -1078,44 +1047,44 @@ public class EKPParser extends Parser {
 		enterRule(_localctx, 28, RULE_avaldis1);
 		int _la;
 		try {
-			setState(166);
-			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
+			setState(163);
+			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
 			case 1:
 				_localctx = new FunktsiooniValjakutseContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(152); match(MuutujaNimi);
-				setState(153); match(T__23);
-				setState(162);
+				setState(149); match(MuutujaNimi);
+				setState(150); match(T__20);
+				setState(159);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__25) | (1L << T__23) | (1L << MuutujaNimi) | (1L << Arvuliteraal) | (1L << Soneliteraal))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__21) | (1L << T__20) | (1L << MuutujaNimi) | (1L << Arvuliteraal) | (1L << Soneliteraal))) != 0)) {
 					{
-					setState(154); avaldis();
-					setState(159);
+					setState(151); avaldis();
+					setState(156);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-					while (_la==T__26) {
+					while (_la==T__23) {
 						{
 						{
-						setState(155); match(T__26);
-						setState(156); avaldis();
+						setState(152); match(T__23);
+						setState(153); avaldis();
 						}
 						}
-						setState(161);
+						setState(158);
 						_errHandler.sync(this);
 						_la = _input.LA(1);
 					}
 					}
 				}
 
-				setState(164); match(T__14);
+				setState(161); match(T__11);
 				}
 				break;
 			case 2:
 				_localctx = new TriviaalneAvaldis1Context(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(165); avaldis0();
+				setState(162); avaldis0();
 				}
 				break;
 			}
@@ -1197,36 +1166,36 @@ public class EKPParser extends Parser {
 		Avaldis0Context _localctx = new Avaldis0Context(_ctx, getState());
 		enterRule(_localctx, 30, RULE_avaldis0);
 		try {
-			setState(175);
+			setState(172);
 			switch (_input.LA(1)) {
 			case MuutujaNimi:
 				_localctx = new MuutujaNimiRContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(168); match(MuutujaNimi);
+				setState(165); match(MuutujaNimi);
 				}
 				break;
 			case Arvuliteraal:
 				_localctx = new ArvuliteraalRContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(169); match(Arvuliteraal);
+				setState(166); match(Arvuliteraal);
 				}
 				break;
 			case Soneliteraal:
 				_localctx = new SoneliteraalRContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(170); match(Soneliteraal);
+				setState(167); match(Soneliteraal);
 				}
 				break;
-			case T__23:
+			case T__20:
 				_localctx = new SuluavaldisContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(171); match(T__23);
-				setState(172); avaldis();
-				setState(173); match(T__14);
+				setState(168); match(T__20);
+				setState(169); avaldis();
+				setState(170); match(T__11);
 				}
 				break;
 			default:
@@ -1265,60 +1234,58 @@ public class EKPParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3$\u00b4\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3!\u00b1\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\3\2\3\2\3"+
 		"\3\3\3\3\3\7\3(\n\3\f\3\16\3+\13\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
 		"\3\4\5\4\67\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5E\n"+
 		"\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\5\b"+
-		"W\n\b\3\t\3\t\3\t\5\t\\\n\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\7\ne\n\n\f\n\16"+
-		"\nh\13\n\7\nj\n\n\f\n\16\nm\13\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\13"+
-		"\3\13\3\f\3\f\3\f\3\f\3\f\5\f~\n\f\3\r\3\r\3\r\3\r\3\r\3\r\7\r\u0086\n"+
-		"\r\f\r\16\r\u0089\13\r\3\16\3\16\3\16\3\16\3\16\3\16\7\16\u0091\n\16\f"+
-		"\16\16\16\u0094\13\16\3\17\3\17\3\17\5\17\u0099\n\17\3\20\3\20\3\20\3"+
-		"\20\3\20\7\20\u00a0\n\20\f\20\16\20\u00a3\13\20\5\20\u00a5\n\20\3\20\3"+
-		"\20\5\20\u00a9\n\20\3\21\3\21\3\21\3\21\3\21\3\21\3\21\5\21\u00b2\n\21"+
-		"\3\21\2\4\30\32\22\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \2\b\4\2\n\n"+
-		"\21\21\4\2\r\r\32\32\3\2\27\30\7\2\b\t\13\13\31\31\34\34\36\36\4\2\5\5"+
-		"\22\22\4\2\6\6\35\35\u00ba\2\"\3\2\2\2\4)\3\2\2\2\6\66\3\2\2\2\b8\3\2"+
-		"\2\2\nF\3\2\2\2\fN\3\2\2\2\16R\3\2\2\2\20[\3\2\2\2\22]\3\2\2\2\24v\3\2"+
-		"\2\2\26}\3\2\2\2\30\177\3\2\2\2\32\u008a\3\2\2\2\34\u0098\3\2\2\2\36\u00a8"+
-		"\3\2\2\2 \u00b1\3\2\2\2\"#\5\4\3\2#\3\3\2\2\2$%\5\6\4\2%&\7\26\2\2&(\3"+
-		"\2\2\2\'$\3\2\2\2(+\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*\5\3\2\2\2+)\3\2\2\2"+
-		",\67\5\b\5\2-\67\5\n\6\2.\67\5\f\7\2/\67\5\16\b\2\60\67\5\24\13\2\61\62"+
-		"\7\f\2\2\62\63\5\4\3\2\63\64\7\17\2\2\64\67\3\2\2\2\65\67\5\22\n\2\66"+
-		",\3\2\2\2\66-\3\2\2\2\66.\3\2\2\2\66/\3\2\2\2\66\60\3\2\2\2\66\61\3\2"+
-		"\2\2\66\65\3\2\2\2\67\7\3\2\2\289\7\24\2\29:\7\7\2\2:;\5\24\13\2;<\7\20"+
-		"\2\2<=\7\f\2\2=>\5\4\3\2>D\7\17\2\2?@\7\23\2\2@A\7\f\2\2AB\5\4\3\2BC\7"+
-		"\17\2\2CE\3\2\2\2D?\3\2\2\2DE\3\2\2\2E\t\3\2\2\2FG\7\16\2\2GH\7\7\2\2"+
-		"HI\5\24\13\2IJ\7\20\2\2JK\7\f\2\2KL\5\4\3\2LM\7\17\2\2M\13\3\2\2\2NO\7"+
-		"\37\2\2OP\7\25\2\2PQ\5\24\13\2Q\r\3\2\2\2RS\5\20\t\2SV\7\37\2\2TU\7\25"+
-		"\2\2UW\5\24\13\2VT\3\2\2\2VW\3\2\2\2W\17\3\2\2\2X\\\t\2\2\2Y\\\t\3\2\2"+
-		"Z\\\7\3\2\2[X\3\2\2\2[Y\3\2\2\2[Z\3\2\2\2\\\21\3\2\2\2]^\t\4\2\2^_\5\20"+
-		"\t\2_`\7\37\2\2`k\7\7\2\2af\5\16\b\2bc\7\4\2\2ce\5\16\b\2db\3\2\2\2eh"+
-		"\3\2\2\2fd\3\2\2\2fg\3\2\2\2gj\3\2\2\2hf\3\2\2\2ia\3\2\2\2jm\3\2\2\2k"+
-		"i\3\2\2\2kl\3\2\2\2ln\3\2\2\2mk\3\2\2\2no\7\20\2\2op\7\f\2\2pq\5\4\3\2"+
-		"qr\7\33\2\2rs\5\24\13\2st\7\26\2\2tu\7\17\2\2u\23\3\2\2\2vw\5\26\f\2w"+
-		"\25\3\2\2\2xy\5\30\r\2yz\t\5\2\2z{\5\30\r\2{~\3\2\2\2|~\5\30\r\2}x\3\2"+
-		"\2\2}|\3\2\2\2~\27\3\2\2\2\177\u0080\b\r\1\2\u0080\u0081\5\32\16\2\u0081"+
-		"\u0087\3\2\2\2\u0082\u0083\f\4\2\2\u0083\u0084\t\6\2\2\u0084\u0086\5\32"+
-		"\16\2\u0085\u0082\3\2\2\2\u0086\u0089\3\2\2\2\u0087\u0085\3\2\2\2\u0087"+
-		"\u0088\3\2\2\2\u0088\31\3\2\2\2\u0089\u0087\3\2\2\2\u008a\u008b\b\16\1"+
-		"\2\u008b\u008c\5\34\17\2\u008c\u0092\3\2\2\2\u008d\u008e\f\4\2\2\u008e"+
-		"\u008f\t\7\2\2\u008f\u0091\5\34\17\2\u0090\u008d\3\2\2\2\u0091\u0094\3"+
-		"\2\2\2\u0092\u0090\3\2\2\2\u0092\u0093\3\2\2\2\u0093\33\3\2\2\2\u0094"+
-		"\u0092\3\2\2\2\u0095\u0096\7\5\2\2\u0096\u0099\5\34\17\2\u0097\u0099\5"+
-		"\36\20\2\u0098\u0095\3\2\2\2\u0098\u0097\3\2\2\2\u0099\35\3\2\2\2\u009a"+
-		"\u009b\7\37\2\2\u009b\u00a4\7\7\2\2\u009c\u00a1\5\24\13\2\u009d\u009e"+
-		"\7\4\2\2\u009e\u00a0\5\24\13\2\u009f\u009d\3\2\2\2\u00a0\u00a3\3\2\2\2"+
-		"\u00a1\u009f\3\2\2\2\u00a1\u00a2\3\2\2\2\u00a2\u00a5\3\2\2\2\u00a3\u00a1"+
-		"\3\2\2\2\u00a4\u009c\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5\u00a6\3\2\2\2\u00a6"+
-		"\u00a9\7\20\2\2\u00a7\u00a9\5 \21\2\u00a8\u009a\3\2\2\2\u00a8\u00a7\3"+
-		"\2\2\2\u00a9\37\3\2\2\2\u00aa\u00b2\7\37\2\2\u00ab\u00b2\7 \2\2\u00ac"+
-		"\u00b2\7!\2\2\u00ad\u00ae\7\7\2\2\u00ae\u00af\5\24\13\2\u00af\u00b0\7"+
-		"\20\2\2\u00b0\u00b2\3\2\2\2\u00b1\u00aa\3\2\2\2\u00b1\u00ab\3\2\2\2\u00b1"+
-		"\u00ac\3\2\2\2\u00b1\u00ad\3\2\2\2\u00b2!\3\2\2\2\21)\66DV[fk}\u0087\u0092"+
-		"\u0098\u00a1\u00a4\u00a8\u00b1";
+		"W\n\b\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\7\nb\n\n\f\n\16\ne\13\n\7\n"+
+		"g\n\n\f\n\16\nj\13\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3\13\3\f\3\f"+
+		"\3\f\3\f\3\f\5\f{\n\f\3\r\3\r\3\r\3\r\3\r\3\r\7\r\u0083\n\r\f\r\16\r\u0086"+
+		"\13\r\3\16\3\16\3\16\3\16\3\16\3\16\7\16\u008e\n\16\f\16\16\16\u0091\13"+
+		"\16\3\17\3\17\3\17\5\17\u0096\n\17\3\20\3\20\3\20\3\20\3\20\7\20\u009d"+
+		"\n\20\f\20\16\20\u00a0\13\20\5\20\u00a2\n\20\3\20\3\20\5\20\u00a6\n\20"+
+		"\3\21\3\21\3\21\3\21\3\21\3\21\3\21\5\21\u00af\n\21\3\21\2\4\30\32\22"+
+		"\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \2\6\5\2\3\3\n\n\r\r\7\2\b\t\13"+
+		"\13\27\27\31\31\33\33\4\2\6\6\21\21\4\2\5\5\32\32\u00b5\2\"\3\2\2\2\4"+
+		")\3\2\2\2\6\66\3\2\2\2\b8\3\2\2\2\nF\3\2\2\2\fN\3\2\2\2\16R\3\2\2\2\20"+
+		"X\3\2\2\2\22Z\3\2\2\2\24s\3\2\2\2\26z\3\2\2\2\30|\3\2\2\2\32\u0087\3\2"+
+		"\2\2\34\u0095\3\2\2\2\36\u00a5\3\2\2\2 \u00ae\3\2\2\2\"#\5\4\3\2#\3\3"+
+		"\2\2\2$%\5\6\4\2%&\7\25\2\2&(\3\2\2\2\'$\3\2\2\2(+\3\2\2\2)\'\3\2\2\2"+
+		")*\3\2\2\2*\5\3\2\2\2+)\3\2\2\2,\67\5\b\5\2-\67\5\n\6\2.\67\5\f\7\2/\67"+
+		"\5\16\b\2\60\67\5\24\13\2\61\62\7\f\2\2\62\63\5\4\3\2\63\64\7\17\2\2\64"+
+		"\67\3\2\2\2\65\67\5\22\n\2\66,\3\2\2\2\66-\3\2\2\2\66.\3\2\2\2\66/\3\2"+
+		"\2\2\66\60\3\2\2\2\66\61\3\2\2\2\66\65\3\2\2\2\67\7\3\2\2\289\7\23\2\2"+
+		"9:\7\7\2\2:;\5\24\13\2;<\7\20\2\2<=\7\f\2\2=>\5\4\3\2>D\7\17\2\2?@\7\22"+
+		"\2\2@A\7\f\2\2AB\5\4\3\2BC\7\17\2\2CE\3\2\2\2D?\3\2\2\2DE\3\2\2\2E\t\3"+
+		"\2\2\2FG\7\16\2\2GH\7\7\2\2HI\5\24\13\2IJ\7\20\2\2JK\7\f\2\2KL\5\4\3\2"+
+		"LM\7\17\2\2M\13\3\2\2\2NO\7\34\2\2OP\7\24\2\2PQ\5\24\13\2Q\r\3\2\2\2R"+
+		"S\5\20\t\2SV\7\34\2\2TU\7\24\2\2UW\5\24\13\2VT\3\2\2\2VW\3\2\2\2W\17\3"+
+		"\2\2\2XY\t\2\2\2Y\21\3\2\2\2Z[\7\26\2\2[\\\5\20\t\2\\]\7\34\2\2]h\7\7"+
+		"\2\2^c\5\16\b\2_`\7\4\2\2`b\5\16\b\2a_\3\2\2\2be\3\2\2\2ca\3\2\2\2cd\3"+
+		"\2\2\2dg\3\2\2\2ec\3\2\2\2f^\3\2\2\2gj\3\2\2\2hf\3\2\2\2hi\3\2\2\2ik\3"+
+		"\2\2\2jh\3\2\2\2kl\7\20\2\2lm\7\f\2\2mn\5\4\3\2no\7\30\2\2op\5\24\13\2"+
+		"pq\7\25\2\2qr\7\17\2\2r\23\3\2\2\2st\5\26\f\2t\25\3\2\2\2uv\5\30\r\2v"+
+		"w\t\3\2\2wx\5\30\r\2x{\3\2\2\2y{\5\30\r\2zu\3\2\2\2zy\3\2\2\2{\27\3\2"+
+		"\2\2|}\b\r\1\2}~\5\32\16\2~\u0084\3\2\2\2\177\u0080\f\4\2\2\u0080\u0081"+
+		"\t\4\2\2\u0081\u0083\5\32\16\2\u0082\177\3\2\2\2\u0083\u0086\3\2\2\2\u0084"+
+		"\u0082\3\2\2\2\u0084\u0085\3\2\2\2\u0085\31\3\2\2\2\u0086\u0084\3\2\2"+
+		"\2\u0087\u0088\b\16\1\2\u0088\u0089\5\34\17\2\u0089\u008f\3\2\2\2\u008a"+
+		"\u008b\f\4\2\2\u008b\u008c\t\5\2\2\u008c\u008e\5\34\17\2\u008d\u008a\3"+
+		"\2\2\2\u008e\u0091\3\2\2\2\u008f\u008d\3\2\2\2\u008f\u0090\3\2\2\2\u0090"+
+		"\33\3\2\2\2\u0091\u008f\3\2\2\2\u0092\u0093\7\6\2\2\u0093\u0096\5\34\17"+
+		"\2\u0094\u0096\5\36\20\2\u0095\u0092\3\2\2\2\u0095\u0094\3\2\2\2\u0096"+
+		"\35\3\2\2\2\u0097\u0098\7\34\2\2\u0098\u00a1\7\7\2\2\u0099\u009e\5\24"+
+		"\13\2\u009a\u009b\7\4\2\2\u009b\u009d\5\24\13\2\u009c\u009a\3\2\2\2\u009d"+
+		"\u00a0\3\2\2\2\u009e\u009c\3\2\2\2\u009e\u009f\3\2\2\2\u009f\u00a2\3\2"+
+		"\2\2\u00a0\u009e\3\2\2\2\u00a1\u0099\3\2\2\2\u00a1\u00a2\3\2\2\2\u00a2"+
+		"\u00a3\3\2\2\2\u00a3\u00a6\7\20\2\2\u00a4\u00a6\5 \21\2\u00a5\u0097\3"+
+		"\2\2\2\u00a5\u00a4\3\2\2\2\u00a6\37\3\2\2\2\u00a7\u00af\7\34\2\2\u00a8"+
+		"\u00af\7\35\2\2\u00a9\u00af\7\36\2\2\u00aa\u00ab\7\7\2\2\u00ab\u00ac\5"+
+		"\24\13\2\u00ac\u00ad\7\20\2\2\u00ad\u00af\3\2\2\2\u00ae\u00a7\3\2\2\2"+
+		"\u00ae\u00a8\3\2\2\2\u00ae\u00a9\3\2\2\2\u00ae\u00aa\3\2\2\2\u00af!\3"+
+		"\2\2\2\20)\66DVchz\u0084\u008f\u0095\u009e\u00a1\u00a5\u00ae";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

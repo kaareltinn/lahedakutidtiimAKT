@@ -31,63 +31,28 @@ public class Builtins {
 
     public static int trüki(int x) {
         System.out.println(x);
-        return 0; // lihtsalt selleks, et kõik funktsioonid tagastaksid täisarvu
+        return 0; // lihtsalt selleks, et kõik funktsioonid tagastaksid midagi
     }
 
     public static int trüki(String x) {
         System.out.println(x);
-        return 0; // lihtsalt selleks, et kõik funktsioonid tagastaksid täisarvu
+        return 0; // lihtsalt selleks, et kõik funktsioonid tagastaksid midagi
     }
 
 
     public static int trüki(double x) {
         System.out.println(x);
-        return 0; // lihtsalt selleks, et kõik funktsioonid tagastaksid täisarvu
+        return 0; // lihtsalt selleks, et kõik funktsioonid tagastaksid midagi
     }
 
-
-    /**
-     * Kuvab ekraanile näidatud täisarvu.
-     * Ebavajalik tagastusväärtus antakse praegu vaid selleks,
-     * et kõigi funktsioonide käivitamisel jääks magasini mingi väärtus.
-     */
-    public static int printInt(int x) {
-        System.out.print(x);
-        return 0;
+    public static void voidTest(){
+        System.out.println("proov");
     }
-
-    /**
-     * loeb standardsisendist rea ja teisendab selle täisarvuks
-     */
-    public static int readInt() {
-        if (systemInScanner == null) {
-            systemInScanner = new Scanner(System.in);
-        }
-        return Integer.parseInt(systemInScanner.nextLine());
-    }
-
-    public static String readLine() {
-        if (systemInScanner == null) {
-            systemInScanner = new Scanner(System.in);
-        }
-        return systemInScanner.nextLine();
-    }
-
-    public static double abc(double a){return a;};
-    public static String abc(String a){return a;};
-    public static int abc(int a){return a;};
-
-
-    public static void printStr(String s) {
-        System.out.print(s);
-        abc(power(2,3));
-    }
-
 
     /**
      * Astendamine
      */
-    public static int power(int x, int n) {
+    public static int astenda(int x, int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Ainult mittenegatiivne astendaja on lubatud");
         }
@@ -103,7 +68,7 @@ public class Builtins {
     /**
      * Suurim ühistegur
      */
-    public static int gcd(int a, int b) {
+    public static int leiaSÜ(int a, int b) {
         while(b > 0) {
             int c = a % b;
             a = b;
@@ -127,15 +92,15 @@ public class Builtins {
         return a | b;
     }
 
-    public static String upper(String s) {
+    public static String suuredtähed(String s) {
         return s.toUpperCase();
     }
 
-    public static String lower(String s) {
+    public static String väikesedtähed(String s) {
         return s.toLowerCase();
     }
 
-    public static String replicate(String s, int times) {
+    public static String paljunda(String s, int times) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < times; i++) {
             sb.append(s);
@@ -143,19 +108,19 @@ public class Builtins {
         return sb.toString();
     }
 
-    public static String intToStr(int x) {
+    public static String TAsõneks(int x) {
         return String.valueOf(x);
     }
 
-    public static int strToInt(String s) {
+    public static int sõneTAks(String s) {
         return Integer.parseInt(s);
     }
 
-    public static String doubleToStr(double x) {
+    public static String UKASõneks(double x) {
         return String.valueOf(x);
     }
 
-    public static double strToDouble(String s) {
+    public static double sõneUKAks(String s) {
         return Double.parseDouble(s);
     }
 }

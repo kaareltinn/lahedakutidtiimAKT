@@ -26,7 +26,7 @@ public class StaticChecker {
 			Map<String, Type> plokiSkoop = new HashMap<>(muutujad);
 
 			for (Statement stmt : ((Block) tipp).getStatements()) {
-				System.out.println("Cheking " + stmt.toString());
+				System.out.println("Checking " + stmt.toString());
 				check(stmt, plokiSkoop);
 			}
 		} else if (tipp instanceof VariableDeclaration) {
